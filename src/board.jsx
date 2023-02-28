@@ -4,12 +4,20 @@ import Tile from "./tile";
 import Row from "./row";
 
 function Board() {
-    const [score, setScore] = useState(10);
-    const [rows, setRows] = useState([]);
+    let init_rows = [
+        <Row vals={[0,0,0,0]}/>,
+        <Row vals={[0,0,0,0]}/>,
+        <Row vals={[0,0,2,0]}/>,
+        <Row vals={[0,2,0,0]}/>
+    ];
+    
+    const [score, setScore] = useState(0);
+    const [rows, setRows] = useState(init_rows);
 
     function resetBoard(){
         setScore(0)
-    }
+        setRows([init_rows])
+    }//resetBoard()
     
     return (
     <div class="board">
@@ -22,11 +30,12 @@ function Board() {
                 />
             </form>
         </h2>
-        
-        <Row />
-        <Row />
-        <Row />
-        <Row />
+
+        {rows}
+
+        <div class="credits">
+            <br/>Created by: Daniel Peacock
+        </div>
     </div>
     )
 }//Board()

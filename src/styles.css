@@ -22,7 +22,8 @@ h2{
     width: 100px;
     height: 100px;
     float:left;
-    display:inline;
+    display: flex;
+    justify-content: center;
 }
 
 .board{
@@ -38,4 +39,8 @@ h2{
     background-color: #00274C;
     color:#FFCB05;
     font-weight: bold;
+}
+
+.credits{
+    text-align: center;
 }
