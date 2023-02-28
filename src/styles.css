@@ -11,6 +11,7 @@ div {
 
 h1 {
     text-align: center;
+    margin: 0px;
 }
 
 h2{
@@ -19,8 +20,8 @@ h2{
 
 .tile{
     border-style: solid;
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     float:left;
     display: flex;
     justify-content: center;
@@ -42,5 +43,5 @@ h2{
 }
 
 .credits{
-    text-align: center;
+    text-align: right;
 }
