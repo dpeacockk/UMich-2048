@@ -1,0 +1,41 @@
+html{
+    background-color: #00274C;
+    font-family: Bodoni MT;
+}
+
+
+div {
+    background-color: #FFCB05;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+.tile{
+    border-style: solid;
+    width: 100px;
+    height: 100px;
+    float:left;
+    display:inline;
+}
+
+.board{
+    display: grid;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.reset{
+    background-color: #00274C;
+    color:#FFCB05;
+    font-weight: bold;
+}
