@@ -6,4 +6,4 @@ import App from "./App";
 const root = createRoot(document.getElementById("reactEntry"));
 
 //Render the 2048 game
-root.render(<App />);
+root.render(<App></App>);
