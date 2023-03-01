@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/dpeacockk/UMich-2048/issues"
   },
-  "homepage": "https://github.com/dpeacockk/UMich-2048#readme",
+  "homepage": "https://github.com/dpeacockk/UMich-2048/",
   "devDependencies": {
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
