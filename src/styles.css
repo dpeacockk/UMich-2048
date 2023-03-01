@@ -45,3 +45,13 @@ h2{
 .credits{
     text-align: right;
 }
+
+.end{
+    text-align: center;
+}
+
+.pic{
+    height: 125px;
+    width: 125px;
+    object-fit: cover;
+}
