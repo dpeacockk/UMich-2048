@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import { updateBoard } from "./helpers";
 import img2 from "./img/2.jpeg"
 import img4 from "./img/4.jpeg"
 import img8 from "./img/8.jpeg"
@@ -306,15 +305,37 @@ function Board() {
 
     return (
     <div className="board">
-        <h2>Score: {score} <br />
-            <form>
-                <input className="reset" 
-                       type="button" 
-                       value="Reset"
-                       onClick={() => resetBoard()}
-                />
-            </form>
-        </h2>
+        <div className="wrapper">
+            <h2 className="flex">
+                Score: {score} <br /><br />
+                <form>
+                    <input className="reset" 
+                        type="button" 
+                        value="Reset"
+                        onClick={() => resetBoard()}
+                    />
+                </form>
+            </h2>
+            <h2 className="help">
+                <div className="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>  
+                </div> <br />
+                <div className="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>  
+                </div> <br />
+            </h2>
+        </div>
+
 
         <div>{renderBoard()}</div>
         <h1 className="end">
