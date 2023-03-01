@@ -346,14 +346,14 @@ function Board() {
             </h2>
             <h2 className="help">
                 <div className="dropdown">
-                    <button class="dropbtn">How to Play</button>
-                        <div class="dropdown-content">
+                    <button className="dropbtn">How to Play</button>
+                        <div className="dropdown-content">
                             <div styles="background-color:white;">{how_to_play()}</div>
                         </div>  
                 </div> <br /><br />
                 <div className="dropdown">
-                    <button class="dropbtn">Key</button>
-                        <div class="dropdown-content">
+                    <button className="dropbtn">Key</button>
+                        <div className="dropdown-content">
                             <div>{show_key()}</div>
                         </div>  
                 </div> <br />
