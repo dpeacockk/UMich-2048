@@ -4,7 +4,10 @@
   "description": "University of Michigan themed 2048 game",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel build index.html --public-url ."
+    "dev": "parcel build index.html --public-url .",
+    "build": "parcel build src/index.html",
+    "predeploy": "rm -rf dist && parcel build src/index.html --no-source-maps --public-url ./",
+    "deploy": "gh-pages -d dist"`
   },
   "repository": {
     "type": "git",
