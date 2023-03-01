@@ -1,0 +1,118 @@
+html {
+  background-color: #00274c;
+  font-family: Bodoni MT;
+}
+
+div {
+  background-color: #ffcb05;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+}
+
+.tile {
+  width: 125px;
+  height: 125px;
+  float: left;
+  border-style: solid;
+  justify-content: center;
+  display: flex;
+}
+
+.board {
+  display: grid;
+}
+
+.row {
+  justify-content: center;
+  display: flex;
+}
+
+.reset {
+  color: #ffcb05;
+  background-color: #00274c;
+  font-weight: bold;
+}
+
+.credits {
+  text-align: right;
+}
+
+.end {
+  text-align: center;
+}
+
+.pic {
+  height: 125px;
+  width: 125px;
+  object-fit: cover;
+  float: left;
+}
+
+.small_pic {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  font-size: xx-small;
+}
+
+.help {
+  float: right;
+  margin-right: 35%;
+}
+
+.flex {
+  float: left;
+  margin-left: 35%;
+}
+
+.howto, .key {
+  text-decoration: underline;
+}
+
+.dropbtn {
+  color: #ffcb05;
+  background-color: #00274c;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-content {
+  min-width: 450px;
+  z-index: 1;
+  background-color: #fff;
+  margin-right: auto;
+  display: none;
+  position: absolute;
+  box-shadow: 0 8px 16px #0003;
+}
+
+.dropdown-content div {
+  color: #000;
+  background-color: #fff;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #00274c;
+}
+
+/*# sourceMappingURL=index.1303bb05.css.map */
