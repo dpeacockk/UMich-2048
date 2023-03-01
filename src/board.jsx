@@ -301,6 +301,30 @@ function Board() {
         setScore(0);
         setRows(init_rows);
     }//resetBoard()
+
+    function how_to_play(){
+        return(<>
+        Use your arrow keys to move the tiles. 
+        Tiles with the same number merge into one when they touch. 
+        Add them up to reach Santa Ono! 
+        </>);
+    }//how_to_play()
+
+    function show_key(){
+        return(<div>
+        <div> <img className="small_pic" src={get_img(2048)} alt="" /> Santa Ono - 2048</div>
+        <div> <img className="small_pic" src={get_img(1024)} alt="" /> J.J. McCarthy - 1024</div>
+        <div> <img className="small_pic" src={get_img(512)} alt="" /> Law Library - 512</div>
+        <div> <img className="small_pic" src={get_img(256)} alt="" /> Juwan Howard - 256</div>
+        <div> <img className="small_pic" src={get_img(128)} alt="" /> Burton Memorial Tower - 128</div>
+        <div> <img className="small_pic" src={get_img(64)} alt="" /> Museum of Natural History - 64</div>
+        <div> <img className="small_pic" src={get_img(32)} alt="" /> Michigan Union - 32</div>
+        <div> <img className="small_pic" src={get_img(16)} alt="" /> The Cube - 16</div>
+        <div> <img className="small_pic" src={get_img(8)} alt="" /> Big House - 8</div>
+        <div> <img className="small_pic" src={get_img(4)} alt="" /> Skeeps - 4</div>
+        <div> <img className="small_pic" src={get_img(2)} alt="" /> NYPD - 2</div>
+        </div>);
+    }//show_key()
     
 
     return (
@@ -318,19 +342,15 @@ function Board() {
             </h2>
             <h2 className="help">
                 <div className="dropdown">
-                    <button class="dropbtn">Dropdown</button>
+                    <button class="dropbtn">How to Play</button>
                         <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <div styles="background-color:white;">{how_to_play()}</div>
                         </div>  
-                </div> <br />
+                </div> <br /><br />
                 <div className="dropdown">
-                    <button class="dropbtn">Dropdown</button>
+                    <button class="dropbtn">Key</button>
                         <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <div>{show_key()}</div>
                         </div>  
                 </div> <br />
             </h2>
