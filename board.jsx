@@ -297,7 +297,7 @@ function Board() {
     function check_win(board){
         for(let i = 0; i < 4; ++i){
             for(let j = 0; j < 4; ++j){
-                if(board[i][j] === 2048){
+                if(board[i][j] >= 2048){
                     return true;
                 }
             }
