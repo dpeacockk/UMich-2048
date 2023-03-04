@@ -27310,8 +27310,8 @@ function Board() {
         }, this);
     } //renderBoard()
     //combines tiles and put them in the correct spot
-    function combine_row(board, scre) {
-        for(let i = 0; i < 4; ++i){
+    function combine_row(board, scre, dir) {
+        for(let i = 0; i < 4; ++i)if (dir === "ArrowLeft") {
             if (board[i][0] === board[i][1]) {
                 scre += board[i][0] + board[i][1];
                 board[i][0] += board[i][1];
@@ -27327,14 +27327,31 @@ function Board() {
                 board[i][2] += board[i][3];
                 board[i][3] = 0;
             }
-        } //for
+        } else {
+            if (board[i][2] === board[i][3]) {
+                scre += board[i][2] + board[i][3];
+                board[i][3] += board[i][2];
+                board[i][2] = 0;
+            }
+            if (board[i][1] === board[i][2]) {
+                scre += board[i][1] + board[i][2];
+                board[i][2] += board[i][1];
+                board[i][1] = 0;
+            }
+            if (board[i][0] === board[i][1]) {
+                scre += board[i][0] + board[i][1];
+                board[i][1] += board[i][0];
+                board[i][0] = 0;
+            }
+        } //else (right)
+         //for
         return [
             board,
             scre
         ];
     } //combine_row()
-    function combine_column(board, scre) {
-        for(let i = 0; i < 4; ++i){
+    function combine_column(board, scre, dir) {
+        for(let i = 0; i < 4; ++i)if (dir === "ArrowUp") {
             if (board[0][i] === board[1][i]) {
                 scre += board[0][i] + board[1][i];
                 board[0][i] += board[1][i];
@@ -27350,7 +27367,24 @@ function Board() {
                 board[2][i] += board[3][i];
                 board[3][i] = 0;
             }
-        } //for
+        } else {
+            if (board[2][i] === board[3][i]) {
+                scre += board[2][i] + board[3][i];
+                board[3][i] += board[2][i];
+                board[2][i] = 0;
+            }
+            if (board[1][i] === board[2][i]) {
+                scre += board[1][i] + board[2][i];
+                board[2][i] += board[1][i];
+                board[1][i] = 0;
+            }
+            if (board[0][i] === board[1][i]) {
+                scre += board[0][i] + board[1][i];
+                board[1][i] += board[0][i];
+                board[0][i] = 0;
+            }
+        } //else (down)
+         //for
         return [
             board,
             scre
@@ -27503,19 +27537,19 @@ function Board() {
         var newScore = score;
         if (direction == "ArrowUp") {
             newBoard = moveUp(newBoard);
-            [newBoard, newScore] = combine_column(newBoard, newScore);
+            [newBoard, newScore] = combine_column(newBoard, newScore, direction);
             newBoard = moveUp(newBoard);
         } else if (direction == "ArrowDown") {
             newBoard = moveDown(newBoard);
-            [newBoard, newScore] = combine_column(newBoard, newScore);
+            [newBoard, newScore] = combine_column(newBoard, newScore, direction);
             newBoard = moveDown(newBoard);
         } else if (direction == "ArrowLeft") {
             newBoard = moveLeft(newBoard);
-            [newBoard, newScore] = combine_row(newBoard, newScore);
+            [newBoard, newScore] = combine_row(newBoard, newScore, direction);
             newBoard = moveLeft(newBoard);
         } else if (direction == "ArrowRight") {
             newBoard = moveRight(newBoard);
-            [newBoard, newScore] = combine_row(newBoard, newScore);
+            [newBoard, newScore] = combine_row(newBoard, newScore, direction);
             newBoard = moveRight(newBoard);
         } //elif(right)
         //generate new tile if not win
@@ -27560,14 +27594,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 319,
+                            lineNumber: 355,
                             columnNumber: 15
                         }, this),
                         " Santa Ono - 2048"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 319,
+                    lineNumber: 355,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27579,14 +27613,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 320,
+                            lineNumber: 356,
                             columnNumber: 15
                         }, this),
                         " J.J. McCarthy - 1024"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 320,
+                    lineNumber: 356,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27598,14 +27632,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 321,
+                            lineNumber: 357,
                             columnNumber: 15
                         }, this),
                         " Law Library - 512"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 321,
+                    lineNumber: 357,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27617,14 +27651,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 322,
+                            lineNumber: 358,
                             columnNumber: 15
                         }, this),
                         " Juwan Howard - 256"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 322,
+                    lineNumber: 358,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27636,14 +27670,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 323,
+                            lineNumber: 359,
                             columnNumber: 15
                         }, this),
                         " Burton Memorial Tower - 128"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 323,
+                    lineNumber: 359,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27655,14 +27689,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 324,
+                            lineNumber: 360,
                             columnNumber: 15
                         }, this),
                         " Museum of Natural History - 64"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 324,
+                    lineNumber: 360,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27674,14 +27708,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 325,
+                            lineNumber: 361,
                             columnNumber: 15
                         }, this),
                         " Michigan Union - 32"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 325,
+                    lineNumber: 361,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27693,14 +27727,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 326,
+                            lineNumber: 362,
                             columnNumber: 15
                         }, this),
                         " The Cube - 16"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 326,
+                    lineNumber: 362,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27712,14 +27746,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 327,
+                            lineNumber: 363,
                             columnNumber: 15
                         }, this),
                         " Big House - 8"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 327,
+                    lineNumber: 363,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27731,14 +27765,14 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 328,
+                            lineNumber: 364,
                             columnNumber: 15
                         }, this),
                         " Skeeps - 4"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 328,
+                    lineNumber: 364,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27750,20 +27784,20 @@ function Board() {
                             alt: ""
                         }, void 0, false, {
                             fileName: "board.jsx",
-                            lineNumber: 329,
+                            lineNumber: 365,
                             columnNumber: 15
                         }, this),
                         " NYPD - 2"
                     ]
                 }, void 0, true, {
                     fileName: "board.jsx",
-                    lineNumber: 329,
+                    lineNumber: 365,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "board.jsx",
-            lineNumber: 318,
+            lineNumber: 354,
             columnNumber: 16
         }, this);
     } //show_key()
@@ -27781,12 +27815,12 @@ function Board() {
                             " ",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "board.jsx",
-                                lineNumber: 338,
+                                lineNumber: 374,
                                 columnNumber: 32
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "board.jsx",
-                                lineNumber: 338,
+                                lineNumber: 374,
                                 columnNumber: 38
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27797,18 +27831,18 @@ function Board() {
                                     onClick: ()=>resetBoard()
                                 }, void 0, false, {
                                     fileName: "board.jsx",
-                                    lineNumber: 340,
+                                    lineNumber: 376,
                                     columnNumber: 21
                                 }, this)
                             }, void 0, false, {
                                 fileName: "board.jsx",
-                                lineNumber: 339,
+                                lineNumber: 375,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "board.jsx",
-                        lineNumber: 337,
+                        lineNumber: 373,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -27822,7 +27856,7 @@ function Board() {
                                         children: "How to Play"
                                     }, void 0, false, {
                                         fileName: "board.jsx",
-                                        lineNumber: 349,
+                                        lineNumber: 385,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27832,29 +27866,29 @@ function Board() {
                                             children: how_to_play()
                                         }, void 0, false, {
                                             fileName: "board.jsx",
-                                            lineNumber: 351,
+                                            lineNumber: 387,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "board.jsx",
-                                        lineNumber: 350,
+                                        lineNumber: 386,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "board.jsx",
-                                lineNumber: 348,
+                                lineNumber: 384,
                                 columnNumber: 17
                             }, this),
                             " ",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "board.jsx",
-                                lineNumber: 353,
+                                lineNumber: 389,
                                 columnNumber: 24
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "board.jsx",
-                                lineNumber: 353,
+                                lineNumber: 389,
                                 columnNumber: 30
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27865,7 +27899,7 @@ function Board() {
                                         children: "Key"
                                     }, void 0, false, {
                                         fileName: "board.jsx",
-                                        lineNumber: 355,
+                                        lineNumber: 391,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27874,43 +27908,43 @@ function Board() {
                                             children: show_key()
                                         }, void 0, false, {
                                             fileName: "board.jsx",
-                                            lineNumber: 357,
+                                            lineNumber: 393,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "board.jsx",
-                                        lineNumber: 356,
+                                        lineNumber: 392,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "board.jsx",
-                                lineNumber: 354,
+                                lineNumber: 390,
                                 columnNumber: 17
                             }, this),
                             " ",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "board.jsx",
-                                lineNumber: 359,
+                                lineNumber: 395,
                                 columnNumber: 24
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "board.jsx",
-                        lineNumber: 347,
+                        lineNumber: 383,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "board.jsx",
-                lineNumber: 336,
+                lineNumber: 372,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: renderBoard()
             }, void 0, false, {
                 fileName: "board.jsx",
-                lineNumber: 364,
+                lineNumber: 400,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -27918,7 +27952,7 @@ function Board() {
                 children: check_lose(rows) ? "You lose!" : check_win(rows) ? "You win!" : ""
             }, void 0, false, {
                 fileName: "board.jsx",
-                lineNumber: 365,
+                lineNumber: 401,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27926,13 +27960,13 @@ function Board() {
                 children: "Created by: Daniel Peacock"
             }, void 0, false, {
                 fileName: "board.jsx",
-                lineNumber: 370,
+                lineNumber: 406,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "board.jsx",
-        lineNumber: 335,
+        lineNumber: 371,
         columnNumber: 5
     }, this);
 } //Board()

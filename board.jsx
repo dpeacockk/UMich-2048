@@ -102,20 +102,20 @@ function Board() {
                 board[i][3] = 0;
             } }// if (left)
             else{
-                if(board[i][0] === board[i][1]){
-                    scre += board[i][0] + board[i][1]
-                    board[i][1] += board[i][0];
-                    board[i][0] = 0;
-                } 
+                if(board[i][2] === board[i][3]){
+                    scre += board[i][2] + board[i][3]
+                    board[i][3] += board[i][2];
+                    board[i][2] = 0;
+                }
                 if(board[i][1] === board[i][2]){
                     scre += board[i][1] + board[i][2]
                     board[i][2] += board[i][1];
                     board[i][1] = 0;
                 } 
-                if(board[i][2] === board[i][3]){
-                    scre += board[i][2] + board[i][3]
-                    board[i][3] += board[i][2];
-                    board[i][2] = 0;
+                if(board[i][0] === board[i][1]){
+                    scre += board[i][0] + board[i][1]
+                    board[i][1] += board[i][0];
+                    board[i][0] = 0;
                 }
             }//else (right)
         }//for
@@ -142,21 +142,21 @@ function Board() {
                     board[3][i] = 0;
                 }} // if (up)
             else{
-                if(board[0][i] === board[1][i]){
-                    scre += board[0][i] + board[1][i]
-                    board[1][i] += board[0][i];
-                    board[0][i] = 0;
-                } 
-                if(board[1][i] === board[2][i]){
-                    scre += board[1][i] + board[2][i]
-                    board[2][i] += board[1][i];
-                    board[1][i] = 0;
-                } 
                 if (board[2][i] === board[3][i]){
                     scre += board[2][i] + board[3][i]
                     board[3][i] += board[2][i];
                     board[2][i] = 0;
                 }
+                if(board[1][i] === board[2][i]){
+                    scre += board[1][i] + board[2][i]
+                    board[2][i] += board[1][i];
+                    board[1][i] = 0;
+                } 
+                if(board[0][i] === board[1][i]){
+                    scre += board[0][i] + board[1][i]
+                    board[1][i] += board[0][i];
+                    board[0][i] = 0;
+                } 
             } //else (down)
         }//for
         return [board, scre];
