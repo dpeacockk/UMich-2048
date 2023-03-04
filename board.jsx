@@ -83,9 +83,10 @@ function Board() {
 
 
     //combines tiles and put them in the correct spot
-    function combine_row(board, scre){
+    function combine_row(board, scre, dir){
         for(let i = 0; i < 4; ++i){
-            if(board[i][0] === board[i][1]){
+            if(dir === "ArrowLeft")
+            {if(board[i][0] === board[i][1]){
                 scre += board[i][0] + board[i][1]
                 board[i][0] += board[i][1];
                 board[i][1] = 0;
@@ -99,29 +100,64 @@ function Board() {
                 scre += board[i][2] + board[i][3]
                 board[i][2] += board[i][3];
                 board[i][3] = 0;
-            } 
+            } }// if (left)
+            else{
+                if(board[i][0] === board[i][1]){
+                    scre += board[i][0] + board[i][1]
+                    board[i][1] += board[i][0];
+                    board[i][0] = 0;
+                } 
+                if(board[i][1] === board[i][2]){
+                    scre += board[i][1] + board[i][2]
+                    board[i][2] += board[i][1];
+                    board[i][1] = 0;
+                } 
+                if(board[i][2] === board[i][3]){
+                    scre += board[i][2] + board[i][3]
+                    board[i][3] += board[i][2];
+                    board[i][2] = 0;
+                }
+            }//else (right)
         }//for
         return [board, scre];
     }//combine_row()
 
 
-    function combine_column(board, scre){
+    function combine_column(board, scre, dir){
         for(let i = 0; i < 4; ++i){
-            if(board[0][i] === board[1][i]){
-                scre += board[0][i] + board[1][i]
-                board[0][i] += board[1][i];
-                board[1][i] = 0;
-            } 
-            if(board[1][i] === board[2][i]){
-                scre += board[1][i] + board[2][i]
-                board[1][i] += board[2][i];
-                board[2][i] = 0;
-            } 
-            if (board[2][i] === board[3][i]){
-                scre += board[2][i] + board[3][i]
-                board[2][i] += board[3][i];
-                board[3][i] = 0;
-            }
+            if(dir === "ArrowUp")
+                {if(board[0][i] === board[1][i]){
+                    scre += board[0][i] + board[1][i]
+                    board[0][i] += board[1][i];
+                    board[1][i] = 0;
+                } 
+                if(board[1][i] === board[2][i]){
+                    scre += board[1][i] + board[2][i]
+                    board[1][i] += board[2][i];
+                    board[2][i] = 0;
+                } 
+                if (board[2][i] === board[3][i]){
+                    scre += board[2][i] + board[3][i]
+                    board[2][i] += board[3][i];
+                    board[3][i] = 0;
+                }} // if (up)
+            else{
+                if(board[0][i] === board[1][i]){
+                    scre += board[0][i] + board[1][i]
+                    board[1][i] += board[0][i];
+                    board[0][i] = 0;
+                } 
+                if(board[1][i] === board[2][i]){
+                    scre += board[1][i] + board[2][i]
+                    board[2][i] += board[1][i];
+                    board[1][i] = 0;
+                } 
+                if (board[2][i] === board[3][i]){
+                    scre += board[2][i] + board[3][i]
+                    board[3][i] += board[2][i];
+                    board[2][i] = 0;
+                }
+            } //else (down)
         }//for
         return [board, scre];
     }//combine_column()
@@ -225,25 +261,25 @@ function Board() {
         var newScore = score;
         if(direction == "ArrowUp"){
             newBoard = moveUp(newBoard);
-            [newBoard, newScore] = combine_column(newBoard, newScore);
+            [newBoard, newScore] = combine_column(newBoard, newScore, direction);
             newBoard = moveUp(newBoard);
         }//if (up)
 
         else if(direction == "ArrowDown"){
             newBoard = moveDown(newBoard);
-            [newBoard, newScore] = combine_column(newBoard, newScore);
+            [newBoard, newScore] = combine_column(newBoard, newScore, direction);
             newBoard = moveDown(newBoard);
         }//elif (down)
 
         else if(direction == "ArrowLeft"){
             newBoard = moveLeft(newBoard);
-            [newBoard, newScore] = combine_row(newBoard, newScore);
+            [newBoard, newScore] = combine_row(newBoard, newScore, direction);
             newBoard = moveLeft(newBoard);
         }//elif(left)
 
         else if(direction == "ArrowRight"){
             newBoard = moveRight(newBoard);
-            [newBoard, newScore] = combine_row(newBoard, newScore);
+            [newBoard, newScore] = combine_row(newBoard, newScore, direction);
             newBoard = moveRight(newBoard);
         }//elif(right)
 
